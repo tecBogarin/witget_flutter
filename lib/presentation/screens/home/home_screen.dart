@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_app/config/menu/menu_items.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,6 +10,39 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Menu de Materia 3'),
       ),
+      body: ListView.builder(
+          itemCount: appMenuItems.length, itemBuilder: menuList2),
+    );
+  }
+
+  Widget menuList(BuildContext context, int index) {
+    final menuItem = appMenuItems[index];
+    return Text(menuItem.title);
+  }
+
+  Widget menuList2(BuildContext context, int index) {
+    final menuItem = appMenuItems[index];
+    return _CustomListTitle(menuItem: menuItem);
+  }
+}
+
+class _CustomListTitle extends StatelessWidget {
+  const _CustomListTitle({
+    required this.menuItem,
+  });
+
+  final MenuItem menuItem;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return ListTile(
+      leading: Icon(menuItem.icon, color: colors.primary),
+      trailing: Icon(Icons.arrow_forward_ios_rounded, color: colors.primary),
+      title: Text(menuItem.title),
+      subtitle: Text(menuItem.subTitle),
+      onTap: () {},
     );
   }
 }
