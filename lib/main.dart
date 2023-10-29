@@ -4,6 +4,7 @@ import 'package:widgets_app/config/theme/app_theme.dart';
 
 void main() {
   runApp(const MainApp());
+  
 }
 
 class MainApp extends StatelessWidget {
@@ -13,7 +14,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectedColor: 4).getTheme(),
+      theme: AppTheme(selectedColor: 0).getTheme(),
       // home: const HomeScreen(),
       routerConfig: appRouter,
     );
