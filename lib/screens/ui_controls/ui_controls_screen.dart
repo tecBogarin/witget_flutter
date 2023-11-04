@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_app/config/widget_bases/widget_screen.dart';
 
-class UiControlsScreen extends WidgetScreen {
-  const UiControlsScreen({super.key}) : super(name: 'ui_controls_screen');
+class UiControlsScreen extends StatelessWidget {
+    static const screenName = 'ui_controls_screen';
+  const UiControlsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

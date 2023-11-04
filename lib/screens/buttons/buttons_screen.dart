@@ -11,6 +11,8 @@ class ButtonsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Buttons Screen'),
+        automaticallyImplyLeading:
+            false, // Establece esto en false para ocultar el botón de retorno
       ),
       body: const _ButtonsView(),
       floatingActionButton: FloatingActionButton(

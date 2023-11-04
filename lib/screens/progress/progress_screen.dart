@@ -20,27 +20,60 @@ class _ProgressView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Column(
-        children: [
-          SizedBox(height: 30),
-          Text('Indicador de progreso circular ',style: TextStyle(fontSize: 16)),
-          SizedBox(height: 20),
-          CircularProgressIndicator( strokeWidth: 2,backgroundColor: Colors.black45),
-           SizedBox(height: 30),
-          Text('Indicador de progreso controlado ',style: TextStyle(fontSize: 16)),
-          SizedBox(height: 20),
-          _ControllersProgressIndicator()
-        ],
-      )
-    );
+        child: Column(
+      children: [
+        SizedBox(height: 30),
+        Text('Indicador de progreso circular ', style: TextStyle(fontSize: 16)),
+        SizedBox(height: 20),
+        CircularProgressIndicator(
+            strokeWidth: 2, backgroundColor: Colors.black45),
+        SizedBox(height: 30),
+        Text('Indicador de progreso controlado ',
+            style: TextStyle(fontSize: 16)),
+        SizedBox(height: 20),
+        _ControllersProgressIndicator()
+      ],
+    ));
   }
 }
 
 class _ControllersProgressIndicator extends StatelessWidget {
   const _ControllersProgressIndicator();
 
+  double progressCondition(int value) => (value * 2) / 100;
+  bool progressLimit(double value) => value < 100;
+
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator( strokeWidth: 2,backgroundColor: Colors.black45);
+    return StreamBuilder(
+      stream:
+          Stream.periodic(const Duration(milliseconds: 300), progressCondition)
+              .takeWhile(progressLimit),
+      builder: (context, snapshot) =>
+          progressIndicatorCustom(snapshot.data ?? 0),
+    );
   }
+
+  Widget progressIndicatorCustom(double progressValue) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            circularProgressCustom(progressValue),
+            const SizedBox(
+              width: 20,
+            ),
+            Expanded(
+                child: LinearProgressIndicator(
+              value: progressValue,
+            ))
+          ],
+        ),
+      );
+
+  Widget circularProgressCustom(double progressValue) =>
+      CircularProgressIndicator(
+          value: progressValue,
+          strokeWidth: 2,
+          backgroundColor: Colors.black12);
 }
