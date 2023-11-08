@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_app/presentation/widgets/appBars/app_bar_custom.dart';
 
 const cards = <Map<String, dynamic>>[
   {'elevation': 0.0, 'label': 'Elevation 0'},
@@ -9,16 +10,14 @@ const cards = <Map<String, dynamic>>[
   {'elevation': 5.0, 'label': 'Elevation 5'},
 ];
 
-class CardsScreen extends StatelessWidget {
+class CardsScreen extends StatelessWidget with AppBarCustom {
   static const String screenName = 'card_screen';
   const CardsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cards Screen'),
-      ),
+      appBar: appBarWithReturnButton(title: 'Cards Screen'),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -30,7 +29,7 @@ class CardsScreen extends StatelessWidget {
                 _CardType3(label: card['label'], elevation: card['elevation'])),
             ...cards.map((card) =>
                 _CardType4(label: card['label'], elevation: card['elevation'])),
-                 ...cards.map((card) =>
+            ...cards.map((card) =>
                 _CardType5(label: card['label'], elevation: card['elevation'])),
             const SizedBox(height: 50)
           ],
@@ -159,7 +158,6 @@ class _CardType4 extends StatelessWidget {
   }
 }
 
-
 class _CardType5 extends StatelessWidget {
   final String label;
   final double elevation;
@@ -178,14 +176,13 @@ class _CardType5 extends StatelessWidget {
           Align(
               alignment: Alignment.topRight,
               child: Container(
-                decoration:  const BoxDecoration(
-                  color:Colors.white,
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20))
-                ),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.only(bottomLeft: Radius.circular(20))),
                 child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.more_vert_outlined)
-                ),
+                    onPressed: () {},
+                    icon: const Icon(Icons.more_vert_outlined)),
               )),
         ],
       ),
