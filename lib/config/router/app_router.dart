@@ -3,6 +3,7 @@ import 'package:widgets_app/config/router/list_router.dart';
 
 
 final GoRouter appRouter = GoRouter(
-  routes: routes
+  routes: routes,
+   debugLogDiagnostics: true,
 );
 

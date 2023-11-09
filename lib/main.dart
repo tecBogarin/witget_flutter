@@ -4,7 +4,6 @@ import 'package:widgets_app/config/theme/app_theme.dart';
 
 void main() {
   runApp(const MainApp());
-  
 }
 
 class MainApp extends StatelessWidget {
@@ -13,9 +12,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      title: 'Flutter Widgets',
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selectedColor: 0).getTheme(),
-      // home: const HomeScreen(),
       routerConfig: appRouter,
     );
   }
