@@ -3,7 +3,7 @@ import 'dart:math' show Random;
 import 'package:widgets_app/presentation/widgets/widgets.dart';
 
 class AnimatedScreen extends StatefulWidget {
-  static const name = 'animated_screen';
+  static const screenName = 'animated_screen';
   const AnimatedScreen({super.key});
 
   @override
