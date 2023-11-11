@@ -30,4 +30,9 @@ final List<RouteBase> routes = [
     name: SnackBarScreen.screenName,
     builder: (BuildContext context, GoRouterState state) => const SnackBarScreen(),
   ),
+    GoRoute(
+    path: '/animated',
+    name: AnimatedScreen.name,
+    builder: (BuildContext context, GoRouterState state) => const AnimatedScreen(),
+  ),
 ];
